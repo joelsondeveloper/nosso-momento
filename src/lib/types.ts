@@ -15,4 +15,5 @@ export type Page = {
   music_url: string | null
   photos: string[]
   moments: Moment[]
+  theme_color: string
 }

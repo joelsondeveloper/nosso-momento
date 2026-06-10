@@ -13,14 +13,16 @@ export default function LoginPage() {
   const [error, setError] = useState("");
 
   async function handleGoogle() {
-    const supabase = createClient();
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
-      },
-    });
-  }
+  const supabase = createClient()
+  const redirectTo = typeof window !== 'undefined'
+    ? `${window.location.origin}/auth/callback`
+    : `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`
+  
+  await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo },
+  })
+}
 
   async function handleSendOTP() {
     setLoading(true);
