@@ -17,7 +17,7 @@ export default function MessageSection({
 }: MessageSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-20% 0px" });
-  
+
   // Lógica para pegar o primeiro nome de quem enviou
   const firstName = names.split(/[&,e]/)[0].trim() || "Você";
 
@@ -30,22 +30,22 @@ export default function MessageSection({
     >
       {/* Aspas flutuantes animadas (Estilo Vinyl) */}
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, -15, 0],
           rotate: [0, 8, 0],
-          scale: [1, 1.05, 1]
+          scale: [1, 1.05, 1],
         }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-12 left-12 text-purple-950/15 pointer-events-none"
       >
         <Quote size={80} className="fill-current rotate-180" />
       </motion.div>
-      
+
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, 15, 0],
           rotate: [0, -8, 0],
-          scale: [1, 1.05, 1]
+          scale: [1, 1.05, 1],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-12 right-12 text-purple-950/15 pointer-events-none"
@@ -72,7 +72,10 @@ export default function MessageSection({
           className="mb-8 flex justify-center md:justify-start"
         >
           <span className="px-5 py-2 rounded-full bg-purple-950 text-white text-[10px] font-black uppercase tracking-[0.25em] flex items-center gap-1.5 shadow-md">
-            <HeartHandshake size={12} className="text-pink-300 fill-pink-300/20" />
+            <HeartHandshake
+              size={12}
+              className="text-pink-300 fill-pink-300/20"
+            />
             Mensagem do seu artista favorito
           </span>
         </motion.div>
@@ -86,7 +89,8 @@ export default function MessageSection({
             className="text-4xl md:text-6xl font-black text-purple-950 leading-[1.05] tracking-tighter italic uppercase"
           >
             Palavras que <br />
-            marcaram <span className="text-white drop-shadow-sm">o seu ano.</span>
+            marcaram{" "}
+            <span className="text-white drop-shadow-sm">o seu ano.</span>
           </motion.h2>
 
           {/* Card de mensagem com gradientes e visual Spotify Wrapped */}
@@ -94,19 +98,24 @@ export default function MessageSection({
             initial={{ opacity: 0, scale: 0.95, y: 30 }}
             animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ delay: 0.4, type: "spring", damping: 15 }}
-            className="bg-purple-950 text-white p-8 md:p-10 rounded-[32px] shadow-2xl relative border border-purple-900/40 overflow-hidden group hover:scale-[1.01] transition-transform duration-300"
+            className="bg-purple-950 text-white p-8 md:p-10 rounded-4xl shadow-2xl relative border border-purple-900/40 overflow-hidden group hover:scale-[1.01] transition-transform duration-300"
           >
             {/* Texto técnico decorativo no canto do card */}
             <div className="absolute top-0 right-0 p-8 opacity-5 font-mono text-[10px] select-none pointer-events-none hidden sm:block leading-tight text-right">
-              CHART POSITION #1<br />
-              TRACK: COMPARTILHADA<br />
+              CHART POSITION #1
+              <br />
+              TRACK: COMPARTILHADA
+              <br />
               AUDIO RATE: 100% AMOR
             </div>
 
             <p className="text-xl md:text-2xl font-black text-pink-200 leading-relaxed italic relative z-10">
-              "{message || "Você é a melhor parte de todos os meus dias. Obrigado por cada hit inesquecível ao seu lado."}"
+              &ldquo;
+              {message ||
+                "Você é a melhor parte de todos os meus dias. Obrigado por cada hit inesquecível ao seu lado."}
+              &rdquo;
             </p>
-            
+
             {/* Rodapé do card com Avatar dinâmico */}
             <div className="mt-10 flex items-center gap-4 border-t border-white/10 pt-6 relative z-10">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-amber-400 flex items-center justify-center text-white font-black text-lg shadow-lg rotate-3 group-hover:rotate-0 transition-transform duration-300">
@@ -136,9 +145,7 @@ export default function MessageSection({
       </div>
 
       {/* Shape sutil no fundo */}
-      <div 
-        className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-purple-950/10 blur-3xl pointer-events-none"
-      />
+      <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-purple-950/10 blur-3xl pointer-events-none" />
     </section>
   );
 }

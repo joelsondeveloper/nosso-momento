@@ -36,7 +36,7 @@ export default function TopHits({ moments, photos, themeColor }: TopHitsProps) {
         className="absolute top-1/4 -right-20 w-96 h-96 rounded-full blur-[120px]"
         style={{ backgroundColor: themeColor }}
       />
-      
+
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
@@ -60,8 +60,8 @@ export default function TopHits({ moments, photos, themeColor }: TopHitsProps) {
           </span>
           <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white leading-none mt-2">
             SEUS MOMENTOS <br />
-            <span 
-              className="transition-colors duration-1000" 
+            <span
+              className="transition-colors duration-1000"
               style={{ color: themeColor }}
             >
               MAIS OUVIDOS.
@@ -79,7 +79,11 @@ export default function TopHits({ moments, photos, themeColor }: TopHitsProps) {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.15, type: "spring", stiffness: 100 }}
+              transition={{
+                delay: index * 0.15,
+                type: "spring",
+                stiffness: 100,
+              }}
               className="flex items-center gap-4 group"
             >
               {/* Ranking */}
@@ -89,7 +93,6 @@ export default function TopHits({ moments, photos, themeColor }: TopHitsProps) {
 
               {/* Faixa / Card */}
               <div className="flex-1 flex items-center gap-4 bg-white/5 hover:bg-white/10 p-2.5 pr-6 rounded-2xl border border-white/5 hover:border-white/15 transition-all duration-300 cursor-default shadow-xl hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                
                 {/* Imagem do Momento */}
                 <div className="relative w-14 h-14 md:w-16 md:h-16 shrink-0 overflow-hidden rounded-xl shadow-md bg-purple-950 flex items-center justify-center text-3xl">
                   {photos[index] ? (
@@ -164,8 +167,8 @@ export default function TopHits({ moments, photos, themeColor }: TopHitsProps) {
             )}
           </div>
           <p className="text-white/80 text-xs md:text-sm italic leading-relaxed">
-            "Esses momentos definiram o seu ano. Foram {moments.length} hits românticos que
-            não saíram e nunca sairão do meu coração."
+            &ldquo;Esses momentos definiram o seu ano. Foram {moments.length}{" "}
+            hits românticos que não saíram e nunca sairão do meu coração.&rdquo;
           </p>
         </motion.div>
       </div>

@@ -1,7 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { Page } from "@/lib/types";
-import QRSection from "./QRSection";
 import MusicPlayer from "./MusicPlayer";
 import Counter from "./Counter";
 import PageWrapper from "./PageWrapper";
@@ -30,7 +29,7 @@ export default async function PageView({
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-pink-50 to-rose-100">
-      <PageWrapper>
+      <PageWrapper player={<MusicPlayer url={page.music_url || ""} coverUrl={page.photos[0] ?? null} names={page.names} themeColor={page.theme_color || "#ec4899"} />}>
         {/* Hero Section */}
         <HeroSection
           names={page.names}
@@ -47,7 +46,7 @@ export default async function PageView({
 
         <TopHits moments={page.moments} photos={page.photos} themeColor={page.theme_color || "#ec4899"} />
 
-        <MessageSection message={page.message} names={page.names} themeColor={page.theme_color || "#ec4899"} />
+        <MessageSection message={page.message || ""} names={page.names} themeColor={page.theme_color || "#ec4899"} />
 
         {/* Música */}
         {page.music_url && (

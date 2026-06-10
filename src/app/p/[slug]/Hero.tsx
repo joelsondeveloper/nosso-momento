@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface HeroSectionProps {
   names: string;
@@ -13,7 +14,6 @@ export default function HeroSection({
   themeColor,
   coverUrl,
 }: HeroSectionProps) {
-  
   // Função para descer a página
   const scrollToNext = () => {
     window.scrollTo({
@@ -46,8 +46,8 @@ export default function HeroSection({
           absolute
           -top-48
           -left-32
-          w-[500px]
-          h-[500px]
+          w-150
+          h-150
           rounded-full
           bg-white/20
           blur-3xl
@@ -70,8 +70,8 @@ export default function HeroSection({
           absolute
           -bottom-52
           -right-40
-          w-[600px]
-          h-[600px]
+          w-150
+          h-150
           rounded-full
           bg-black/10
           blur-3xl
@@ -80,11 +80,16 @@ export default function HeroSection({
 
       {/* Conteúdo Principal */}
       <div className="relative z-10 text-center px-6 flex flex-col items-center">
-        
         {/* Texto de Categoria (Wrapped Style) */}
         <motion.p
-          initial={{ opacity: 0, tracking: "0.1em" }}
-          animate={{ opacity: 1, tracking: "0.3em" }}
+          initial={{
+            opacity: 0,
+            letterSpacing: "0.1em",
+          }}
+          animate={{
+            opacity: 1,
+            letterSpacing: "0.3em",
+          }}
           transition={{ duration: 1 }}
           className="
             text-black/60
@@ -96,7 +101,7 @@ export default function HeroSection({
             tracking-[0.3em]
           "
         >
-          Sua Retrospectiva 2024
+          Sua Retrospectiva 2026
         </motion.p>
 
         {/* Foto de Capa (O toque final do Spotify) */}
@@ -107,7 +112,13 @@ export default function HeroSection({
             transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
             className="mb-8 w-48 h-48 md:w-64 md:h-64 shadow-2xl rounded-lg overflow-hidden border-4 border-white"
           >
-            <img src={coverUrl} alt="Capa" className="w-full h-full object-cover" />
+            <Image
+              src={coverUrl}
+              width={300}
+              height={300}
+              alt="Capa"
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         )}
 
@@ -214,7 +225,7 @@ export default function HeroSection({
         transition={{
           duration: 1.5,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
         className="
           absolute
@@ -223,14 +234,14 @@ export default function HeroSection({
           text-3xl
         "
       >
-        <svg 
-          width="32" 
-          height="32" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="3" 
-          strokeLinecap="round" 
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
           strokeLinejoin="round"
         >
           <path d="M7 13L12 18L17 13M7 6L12 11L17 6" />
